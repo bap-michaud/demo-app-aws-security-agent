@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Citation {
+  id                String             @id @default(uuid())
+  quoteText         String
+  authorName        String
+  authorBiography   String?
+  historicalContext String?
+  source            String?
+  category          String
+  tags              String[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  favorites         Favorite[]
+  relatedCitations  CitationRelation[] @relation("FromCitation")
+  relatedTo         CitationRelation[] @relation("ToCitation")
+}
+
+model Favorite {
+  id            String   @id @default(uuid())
+  cognitoUserId String
+  citationId    String
+  createdAt     DateTime @default(now())
+  citation      Citation @relation(fields: [citationId], references: [id], onDelete: Cascade)
+
+  @@unique([cognitoUserId, citationId])
+  @@index([cognitoUserId])
+}
+
+model CitationRelation {
+  id             String   @id @default(uuid())
+  fromCitationId String
+  toCitationId   String
+  relationType   String
+  fromCitation   Citation @relation("FromCitation", fields: [fromCitationId], references: [id], onDelete: Cascade)
+  toCitation     Citation @relation("ToCitation", fields: [toCitationId], references: [id], onDelete: Cascade)
+
+  @@unique([fromCitationId, toCitationId, relationType])
+}
