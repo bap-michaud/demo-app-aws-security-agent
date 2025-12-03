@@ -7,27 +7,27 @@
   - Configure environment variables for AWS services
   - _Requirements: All_
 
-- [-] 2. Set up AWS infrastructure and database connections
+- [ ] 2. Set up AWS infrastructure and database connections
   - [x] 2.1 Configure AWS SDK v3 for DynamoDB and Cognito
     - Install AWS SDK packages
     - Create DynamoDB client configuration in `lib/db/dynamodb.ts`
     - Create Cognito client configuration in `lib/db/cognito.ts`
     - _Requirements: 1.3, 2.2, 6.1_
 
-  - [-] 2.2 Set up Prisma for Aurora Serverless v2
+  - [x] 2.2 Set up Prisma for Aurora Serverless v2
     - Install Prisma and initialize with PostgreSQL
     - Define Prisma schema for Citation, Favorite, and CitationRelation models
     - Create initial migration
     - Create Prisma client in `lib/db/prisma.ts`
     - _Requirements: 3.3, 4.2, 5.4_
 
-  - [ ] 2.3 Create DynamoDB table and indexes
+  - [x] 2.3 Create DynamoDB table and indexes
     - Define Citations table with PK/SK structure
     - Create GSI1 for author-based queries
     - Implement table creation script or IaC configuration
     - _Requirements: 1.3, 6.1, 6.3_
 
-  - [ ] 2.4 Configure Cognito User Pool
+  - [x] 2.4 Configure Cognito User Pool
     - Create Cognito User Pool with email/password authentication
     - Configure password policies
     - Set up user attributes and custom attributes for roles
@@ -65,8 +65,8 @@
     - **Property 4: Logout terminates session**
     - **Validates: Requirements 2.5**
 
-- [ ] 4. Build citation data access layer
-  - [ ] 4.1 Implement DynamoDB citation queries
+- [-] 4. Build citation data access layer
+  - [x] 4.1 Implement DynamoDB citation queries
     - Create citation query functions in `lib/db/queries/citations.ts`
     - Implement listCitations function
     - Implement getCitationById function
@@ -98,7 +98,7 @@
     - **Property 16: Keyword search accuracy**
     - **Validates: Requirements 6.4**
 
-- [ ] 5. Implement favorites functionality
+- [-] 5. Implement favorites functionality
   - [ ] 5.1 Create favorites data access layer
     - Implement favorites queries in `lib/db/queries/favorites.ts`
     - Create addFavorite function

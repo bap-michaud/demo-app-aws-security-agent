@@ -6,13 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:dynamodb:create": "tsx scripts/create-dynamodb-table.ts",
+    "auth:cognito:create": "tsx scripts/create-cognito-user-pool.ts"
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.943.0",
     "@aws-sdk/client-dynamodb": "^3.943.0",
     "@aws-sdk/lib-dynamodb": "^3.943.0",
     "@prisma/client": "^7.1.0",
+    "dotenv": "^17.2.3",
     "next": "16.0.6",
     "react": "19.2.0",
     "react-dom": "19.2.0"
@@ -26,6 +29,7 @@
     "eslint-config-next": "16.0.6",
     "prisma": "^7.1.0",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
